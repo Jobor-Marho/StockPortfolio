@@ -143,4 +143,3 @@ Common error responses include:
 - 500 Internal Server Error
 ```
 
-This README provides a comprehensive overview of your API with clear sections for authentication, endpoints, models, and security. You may want to customize the base URL and add any additional deployment or setup instructions specific to your environment.
