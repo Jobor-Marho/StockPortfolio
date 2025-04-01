@@ -1,0 +1,141 @@
+```http
+### Authentication
+# @name login
+POST {{baseUrl}}/api/login
+Content-Type: application/json
+
+{
+  "userName": "your_username",
+  "password": "your_password"
+}
+
+### Register new user
+POST {{baseUrl}}/api/register
+Content-Type: application/json
+
+{
+  "username": "new_user",
+  "email": "user@example.com",
+  "password": "secure_password"
+}
+
+### Comments
+# Get all comments
+GET {{baseUrl}}/api/Comments
+Authorization: Bearer {{token}}
+
+# Create comment for stock
+POST {{baseUrl}}/api/create/1
+Authorization: Bearer {{token}}
+Content-Type: application/json
+
+{
+  "title": "My Comment",
+  "content": "This is a comment about the stock"
+}
+
+# Get comments for specific stock
+GET {{baseUrl}}/api/Comments/1
+Authorization: Bearer {{token}}
+
+# Update comment
+PUT {{baseUrl}}/api/Comment/update/1
+Authorization: Bearer {{token}}
+Content-Type: application/json
+
+{
+  "title": "Updated Title",
+  "content": "Updated content"
+}
+
+# Get user's comments
+GET {{baseUrl}}/api/Comments/users
+Authorization: Bearer {{token}}
+
+# Delete comment
+DELETE {{baseUrl}}/api/Comment/delete?commentId=1
+Authorization: Bearer {{token}}
+
+### Portfolio
+# Get user portfolio
+GET {{baseUrl}}/api/Portfolio/portfolios
+Authorization: Bearer {{token}}
+
+# Add stock to portfolio
+POST {{baseUrl}}/api/Portfolio?stockSymbol=AAPL
+Authorization: Bearer {{token}}
+
+# Remove stock from portfolio
+DELETE {{baseUrl}}/api/Portfolio/delete/AAPL
+Authorization: Bearer {{token}}
+
+### Stocks
+# Create stock
+POST {{baseUrl}}/api/Stock/create
+Authorization: Bearer {{token}}
+Content-Type: application/json
+
+{
+  "symbol": "AAPL",
+  "companyName": "Apple Inc",
+  "purchase": 150.50,
+  "lastDiv": 0.92,
+  "industry": "Technology",
+  "marketCap": 2500000000
+}
+
+# Get stock by ID
+GET {{baseUrl}}/api/Stock/1
+Authorization: Bearer {{token}}
+
+# Update stock
+PUT {{baseUrl}}/api/Stock/1
+Authorization: Bearer {{token}}
+Content-Type: application/json
+
+{
+  "symbol": "AAPL",
+  "companyName": "Apple Inc Updated",
+  "purchase": 155.50,
+  "lastDiv": 0.95,
+  "industry": "Tech",
+  "marketCap": 2600000000
+}
+
+# Delete stock
+DELETE {{baseUrl}}/api/Stock/1
+Authorization: Bearer {{token}}
+
+# Get all stocks
+GET {{baseUrl}}/api/Stock
+Authorization: Bearer {{token}}
+
+# Get stock by symbol
+GET {{baseUrl}}/api/Stock/symbol/AAPL
+Authorization: Bearer {{token}}
+```
+
+### Usage Instructions:
+1. Save this as `api.http` or similar
+2. Create a `rest-client.env.json` file in the same directory with:
+```json
+{
+  "dev": {
+    "baseUrl": "http://localhost:5000",
+    "token": ""
+  }
+}
+```
+3. After login, copy the token and set it in the environment file
+4. In VS Code with REST Client extension, you can:
+   - Click "Send Request" above each endpoint
+   - Use `###` to separate requests
+   - Variables like `{{token}}` will be pulled from your env file
+
+The file includes:
+- All API endpoints organized by category
+- Proper HTTP methods and headers
+- Example request bodies
+- Authorization headers with token placeholder
+- Environment variables for easy configuration
+- Clear separation between different API sections
