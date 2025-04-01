@@ -1,6 +1,3 @@
-Here's a comprehensive README.md file generated from your OpenAPI specification:
-
-```markdown
 # Identity API
 
 A RESTful API for user authentication, stock management, portfolio tracking, and comment functionality.
